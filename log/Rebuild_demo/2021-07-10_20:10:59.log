@@ -1,0 +1,1 @@
+2021-07-10T20:11:00.579+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T20:11:00.579+0800", "url": "/userInfo/userInfoList"}

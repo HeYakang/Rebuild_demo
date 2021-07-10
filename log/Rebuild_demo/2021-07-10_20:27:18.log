@@ -1,0 +1,2 @@
+2021-07-10T20:27:20.047+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T20:27:20.047+0800", "url": "/userInfo/userInfoList"}
+2021-07-10T20:28:43.822+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T20:28:43.821+0800", "url": "/userInfo/excel"}
