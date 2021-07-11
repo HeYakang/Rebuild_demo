@@ -1,0 +1,9 @@
+2021-07-10T19:43:46.616+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:43:46.616+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:43:56.467+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:43:56.467+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:44:19.284+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:44:19.284+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:45:49.780+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:45:49.780+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:46:36.035+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:46:36.035+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:47:54.463+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:47:54.463+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:48:25.400+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:48:25.400+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:48:29.785+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:48:29.785+0800", "url": "/userInfo/userInfo"}
+2021-07-10T19:48:34.260+0800	INFO	middleware/install_log.go:13	request	{"time": "2021-07-10T19:48:34.260+0800", "url": "/userInfo/userInfo"}
