@@ -10,4 +10,6 @@ require (
 	go.uber.org/zap v1.18.1
 	gorm.io/driver/mysql v1.1.1
 	gorm.io/gorm v1.21.11
+	github.com/golang/mock v1.6.0
+
 )

@@ -1,8 +1,8 @@
-package dao
+package mock
 
 import (
-	"Rebuild_demo/dao/db"
 	"Rebuild_demo/model"
+	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
 	"github.com/stretchr/testify/suite"
 	"testing"
@@ -15,14 +15,19 @@ type OrderTestSuite struct {
 	suite.Suite
 	orders []*model.DemoOrder
 	updateDate []*map[string]interface{}
-	dao OrderDAO
+	dao *MockOrderDAO
 }
 
 func (s *OrderTestSuite) SetupSuite(){
 	//输出日志
 	s.T().Log("SetupSuite")
 	//新建数据库使用
-	s.dao =NewOrderDAO(db.NewOrm())
+	//建立mock
+	ctrl := gomock.NewController(s.T())
+	defer ctrl.Finish() // 断言 DB.Get() 方法是否被调用
+	s.dao = NewMockOrderDAO(ctrl)
+	//编写回调用方法
+	//创建
 
 	s.orders = []*model.DemoOrder{
 		{OrderNo:  "1111111111", UserName: "heyakang1", Amount:   1000, Status:   "false", FileUrl:  "FileUrl"},
@@ -37,6 +42,36 @@ func (s *OrderTestSuite) SetupSuite(){
 		{"amount":333333.3},
 		{"amount":444444.4},
 	}
+
+	//mock创建
+	for _,v :=range s.orders{
+		s.dao.EXPECT().Create(gomock.Eq(v)).Return(v)
+	}
+
+	//mock按照NO查找
+	for _,v :=range s.orders{
+		s.dao.EXPECT().QueryByNo(gomock.Eq(v.OrderNo)).Return(v)
+	}
+
+	//mock按照姓名查找
+	for _,v :=range s.orders{
+		s.dao.EXPECT().QueryListByName(gomock.Eq(v.UserName),gomock.Eq("")).Return(nil)
+	}
+
+	//查询整张表
+	s.dao.EXPECT().QueryTable().Return(s.orders)
+
+	//修改数据
+	for i,v :=range s.orders{
+		s.dao.EXPECT().UpdateByNo(gomock.Eq(v.UserName),gomock.Eq(s.updateDate[i])).Return(nil)
+	}
+
+	//删除数据
+	for _,v :=range s.orders{
+		s.dao.EXPECT().DeleteByNo(gomock.Eq(v.OrderNo)).Return(nil)
+	}
+
+
 }
 
 func (s *OrderTestSuite) SetupTest() {
@@ -122,5 +157,6 @@ func (s *OrderTestSuite) Test_orderDAO_QueryTable(){
 // In order for 'go test' to run this suite, we need to create
 // a normal test function and pass our suite to suite.Run
 func TestOrderTestSuite(t *testing.T) {
+
 	suite.Run(t, new(OrderTestSuite))
 }
